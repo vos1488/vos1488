@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @vos1488
-- c++, html, php coder
+- c++, html, php (coder)
 
 sehr gut
 
