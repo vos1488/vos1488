@@ -18,10 +18,10 @@
 
 ## Projects / Проекты
 ### Obj-C Overlay (Private Repository)
-[![Obj-C Overlay](https://via.placeholder.com/150)](https://github.com/vos1488/ObjCOverlay)
+[![Obj-C Overlay](https://via.placeholder.com/150)](https://github.com/vos1488/overlay-objc)
 
 ### GoWEBCHAT
-[![GoWEBCHAT](https://via.placeholder.com/150)](https://github.com/vos1488/GoWEBCHAT)
+[![GoWEBCHAT](https://via.placeholder.com/150)](https://github.com/vos1488/go-webchat)
 
 ## Contact Me / Связаться со мной
 <p align="center">
