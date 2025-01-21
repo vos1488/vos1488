@@ -4,10 +4,47 @@
       <stop offset="0%" style="stop-color:blue;stop-opacity:1" />
       <stop offset="100%" style="stop-color:fuchsia;stop-opacity:1" />
     </linearGradient>
+    <style>
+      .title {
+        font-family: 'Georgia', serif;
+        font-size: 40px;
+        fill: white;
+        text-shadow: 2px 2px 4px #000000;
+        text-anchor: middle;
+        animation: fadeIn 3s infinite alternate;
+      }
+      .subtitle {
+        font-family: 'Courier New', monospace;
+        font-size: 20px;
+        fill: white;
+        text-shadow: 1px 1px 2px #000000;
+        text-anchor: middle;
+        animation: fadeIn 3s infinite alternate;
+      }
+      @keyframes fadeIn {
+        from { fill: white; }
+        to { fill: black; }
+      }
+      @keyframes bounce {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(700px, 0); }
+        50% { transform: translate(700px, 180px); }
+        75% { transform: translate(0, 180px); }
+        100% { transform: translate(0, 0); }
+      }
+      .star {
+        fill: white;
+        stroke: none;
+        animation: bounce 5s infinite;
+      }
+    </style>
   </defs>
   <rect width="100%" height="100%" fill="url(#grad1)"/>
-  <text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" font-size="40" font-family="Arial" fill="white">
-    <animate attributeName="fill" values="white;black;white" dur="3s" repeatCount="indefinite"/>
-    Welcome to my GitHub Profile!
-  </text>
+  <circle cx="50" cy="50" r="5" class="star" style="animation-delay: 0s;"/>
+  <circle cx="150" cy="50" r="5" class="star" style="animation-delay: 1s;"/>
+  <circle cx="250" cy="50" r="5" class="star" style="animation-delay: 2s;"/>
+  <circle cx="350" cy="50" r="5" class="star" style="animation-delay: 3s;"/>
+  <circle cx="450" cy="50" r="5" class="star" style="animation-delay: 4s;"/>
+  <text x="50%" y="50%" alignment-baseline="middle" class="title">Welcome to my GitHub Profile!</text>
+  <text x="50%" y="70%" alignment-baseline="middle" class="subtitle">Explore my projects and repositories</text>
 </svg>
