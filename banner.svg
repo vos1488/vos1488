@@ -91,44 +91,80 @@
         50% { filter: url(#glow) drop-shadow(0 0 15px #C850C0); }
         100% { filter: url(#glow) drop-shadow(0 0 5px #4158D0); }
       }
+      @keyframes codeFloat {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(20px); }
+      }
+      .floating-code {
+        animation: codeFloat 4s ease-in-out infinite;
+      }
+      @keyframes rotate3D {
+        0% { transform: perspective(500px) rotateY(0deg); }
+        100% { transform: perspective(500px) rotateY(360deg); }
+      }
+      .rotate3d {
+        animation: rotate3D 8s linear infinite;
+      }
+      @keyframes notification {
+        0% { transform: scale(1); }
+        5% { transform: scale(1.2); }
+        10% { transform: scale(1); }
+        100% { transform: scale(1); }
+      }
+      .notification {
+        animation: notification 3s infinite;
+      }
     </style>
   </defs>
   
   <rect width="100%" height="100%" fill="url(#grad1)"/>
   
-  <!-- Add meteor effects -->
-  <line x1="0" y1="0" x2="20" y2="0" class="meteor" style="animation-delay: 0s"/>
-  <line x1="0" y1="0" x2="20" y2="0" class="meteor" style="animation-delay: 1.5s"/>
+  <!-- MacOS window controls -->
+  <g transform="translate(50,30)">
+    <circle cx="0" cy="0" r="5" fill="#FF5F56"/>
+    <circle cx="15" cy="0" r="5" fill="#FFBD2E"/>
+    <circle cx="30" cy="0" r="5" fill="#27C93F"/>
+  </g>
 
-  <!-- Add decorative code ring -->
-  <circle cx="700" cy="50" r="30" class="code-ring"/>
-  <circle cx="100" cy="150" r="40" class="code-ring"/>
+  <!-- System Specs Panel - Enhanced -->
+  <g transform="translate(50,70)">
+    <rect width="200" height="110" rx="5" fill="rgba(0,0,0,0.3)"/>
+    <text x="10" y="25" font-family="monospace" font-size="10" fill="#50FA7B">Hardware Details:</text>
+    <text x="10" y="45" font-family="monospace" font-size="10" fill="#F8F8F2">• CPU: i7-4980HQ (4C/8T, 6MB)</text>
+    <text x="10" y="60" font-family="monospace" font-size="10" fill="#F8F8F2">• GPU: GT 750M (2GB GDDR5)</text>
+    <text x="10" y="75" font-family="monospace" font-size="10" fill="#F8F8F2">• RAM: 16GB DDR3L 1600MHz</text>
+    <text x="10" y="90" font-family="monospace" font-size="10" fill="#F8F8F2">• SSD: 512GB PCIe 2.0 x4</text>
+    <text x="10" y="105" font-family="monospace" font-size="10" fill="#F8F8F2">• Display: 15" Retina IPS</text>
+  </g>
 
-  <!-- Animated gears -->
-  <path class="gear" d="M50,50 L55,45 L60,50 L55,55 Z" />
-  <path class="gear" d="M700,150 L705,145 L710,150 L705,155 Z" />
-  
-  <!-- Coding symbols -->
+  <!-- Development Environment Panel - Enhanced -->
+  <g transform="translate(550,70)">
+    <rect width="200" height="110" rx="5" fill="rgba(0,0,0,0.3)"/>
+    <text x="10" y="25" font-family="monospace" font-size="10" fill="#FF79C6">Development Stack:</text>
+    <text x="10" y="45" font-family="monospace" font-size="10" fill="#F8F8F2">• IDE: Xcode 13.2.1 (13C100)</text>
+    <text x="10" y="60" font-family="monospace" font-size="10" fill="#F8F8F2">• VSCode + ZSH</text>
+    <text x="10" y="75" font-family="monospace" font-size="10" fill="#F8F8F2">• Git + Homebrew + SPM</text>
+    <text x="10" y="90" font-family="monospace" font-size="10" fill="#F8F8F2">• Swift 5 + Obj-C + C++17</text>
+    <text x="10" y="105" font-family="monospace" font-size="10" fill="#F8F8F2">• Go 1.23.4 + WebSocket</text>
+  </g>
+
+  <!-- Center Stats Panel - Enhanced -->
+  <g transform="translate(300,70)">
+    <rect width="200" height="110" rx="5" fill="rgba(0,0,0,0.3)"/>
+    <text x="10" y="25" font-family="monospace" font-size="10" fill="#8BE9FD">Project Metrics:</text>
+    <text x="10" y="45" font-family="monospace" font-size="10" fill="#F8F8F2">• Security: HTTPS/SSL/TLS</text>
+    <text x="10" y="60" font-family="monospace" font-size="10" fill="#F8F8F2">• Testing: Unit/UI/E2E</text>
+    <text x="10" y="75" font-family="monospace" font-size="10" fill="#F8F8F2">• CI/CD: Jenkins/GitHub</text>
+    <text x="10" y="90" font-family="monospace" font-size="10" fill="#F8F8F2">• Code Review: Passed</text>
+    <text x="10" y="105" font-family="monospace" font-size="10" fill="#F8F8F2">• Optimization: 98%</text>
+  </g>
+
+  <!-- Add Version Badge -->
+  <g transform="translate(700,30)">
+    <rect width="80" height="20" rx="10" fill="rgba(255,255,255,0.1)"/>
+    <text x="40" y="14" font-family="monospace" font-size="10" fill="#50FA7B" text-anchor="middle">v2.0.0</text>
+  </g>
+
+  <!-- Minimal decoration -->
   <text x="100" y="40" class="coding-symbol">&lt;/&gt;</text>
-  <text x="650" y="160" class="coding-symbol">{}</text>
-  
-  <!-- Enhanced stars with different sizes and animations -->
-  <circle cx="150" cy="50" r="3" class="star" style="animation-delay: 0s;"/>
-  <circle cx="250" cy="70" r="4" class="star" style="animation-delay: 0.5s;"/>
-  <circle cx="350" cy="40" r="3" class="star" style="animation-delay: 1s;"/>
-  <circle cx="450" cy="60" r="4" class="star" style="animation-delay: 1.5s;"/>
-  <circle cx="550" cy="30" r="3" class="star" style="animation-delay: 2s;"/>
-  
-  <!-- Main text with enhanced effects -->
-  <text x="50%" y="45%" alignment-baseline="middle" class="title">Welcome to my GitHub Profile!</text>
-  <text x="50%" y="65%" alignment-baseline="middle" class="subtitle">Explore my projects and repositories</text>
-
-  <!-- Add particles -->
-  <circle class="particle" cx="400" cy="100" r="2" style="--tx: 100px; --ty: -50px; animation: particle 3s infinite;"/>
-  <circle class="particle" cx="200" cy="50" r="2" style="--tx: -80px; --ty: 100px; animation: particle 4s infinite 1s;"/>
-  <circle class="particle" cx="600" cy="150" r="2" style="--tx: 120px; --ty: -80px; animation: particle 3.5s infinite 0.5s;"/>
-
-  <!-- Add decorative binary code background -->
-  <text class="coding-symbol" x="50" y="180" font-size="14" opacity="0.2">01001100</text>
-  <text class="coding-symbol" x="750" y="30" font-size="14" opacity="0.2">10110011</text>
 </svg>

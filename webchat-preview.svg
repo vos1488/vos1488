@@ -22,6 +22,22 @@
         0%, 100% { opacity: 0.4; }
         50% { opacity: 1; }
       }
+      @keyframes ripple {
+        0% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(2); opacity: 0; }
+      }
+      @keyframes videoWave {
+        0%, 100% { transform: scale(1); opacity: 0.6; }
+        50% { transform: scale(1.2); opacity: 0.3; }
+      }
+      @keyframes shine {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      @keyframes highlightNew {
+        0%, 100% { stroke: rgba(255,255,255,0.1); }
+        50% { stroke: #4ade80; }
+      }
       .message-bubble {
         filter: url(#shadow);
         animation: fadeInUp 0.5s ease-out backwards;
@@ -32,21 +48,54 @@
       .typing-dot {
         animation: blink 1s infinite;
       }
+      .ripple-effect {
+        animation: ripple 1.5s ease-out infinite;
+      }
+      .video-indicator {
+        animation: videoWave 2s ease-in-out infinite;
+      }
+      .shine-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .shine-effect::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        animation: shine 2s infinite;
+      }
+      .new-feature {
+        animation: highlightNew 3s ease-in-out infinite;
+      }
     </style>
   </defs>
 
-  <!-- Background -->
+  <!-- Keep essential UI elements only -->
   <rect width="150" height="150" fill="url(#chatGrad)" rx="10"/>
   
-  <!-- Chat UI Elements -->
-  <rect x="15" y="15" width="120" height="120" rx="8" fill="rgba(255,255,255,0.1)"/>
-  
-  <!-- Header -->
+  <!-- Simplified header -->
   <rect x="15" y="15" width="120" height="25" rx="8" fill="rgba(255,255,255,0.2)"/>
   <circle cx="25" cy="27" r="3" fill="#4ade80" class="online-status"/>
   <text x="35" y="30" font-size="10" fill="white">WebChat</text>
 
-  <!-- Chat Messages -->
+  <!-- Add Status Bar -->
+  <g transform="translate(20,40)">
+    <rect width="110" height="12" rx="6" fill="rgba(255,255,255,0.05)"/>
+    <text x="10" y="9" font-size="6" fill="#4ade80">● CONNECTED</text>
+    <text x="90" y="9" font-size="6" fill="white" text-anchor="end">128ms</text>
+  </g>
+
+  <!-- Add Security Indicator -->
+  <g transform="translate(120,40)">
+    <circle cx="0" cy="0" r="4" fill="#4ade80"/>
+    <text x="0" y="2" font-size="5" fill="white" text-anchor="middle">🔒</text>
+  </g>
+
+  <!-- Main chat area -->
+  <rect x="15" y="45" width="120" height="90" rx="8" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- Essential messages -->
   <g class="message-bubble" style="animation-delay: 0.2s">
     <rect x="20" y="50" width="70" height="20" rx="10" fill="rgba(255,255,255,0.9)"/>
     <text x="35" y="63" font-size="8" fill="#333">Hello!</text>
@@ -57,12 +106,9 @@
     <text x="75" y="93" font-size="8" fill="white">Hi there!</text>
   </g>
 
-  <!-- Typing Indicator -->
-  <g transform="translate(20,110)">
-    <circle cx="0" cy="0" r="2" fill="white" class="typing-dot" style="animation-delay: 0s"/>
-    <circle cx="6" cy="0" r="2" fill="white" class="typing-dot" style="animation-delay: 0.2s"/>
-    <circle cx="12" cy="0" r="2" fill="white" class="typing-dot" style="animation-delay: 0.4s"/>
-  </g>
+  <!-- Simple input area -->
+  <rect x="20" y="120" width="110" height="10" rx="5" fill="rgba(255,255,255,0.05)"/>
+  <text x="30" y="127" font-size="6" fill="rgba(255,255,255,0.7)">Type a message...</text>
 
   <!-- Bottom Label -->
   <text x="75" y="145" text-anchor="middle" fill="white" font-size="11" font-family="monospace">GoWEBCHAT</text>
