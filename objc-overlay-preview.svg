@@ -1,0 +1,41 @@
+<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iosGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF2D55"/>
+      <stop offset="100%" style="stop-color:#FF3B30"/>
+    </linearGradient>
+    <style>
+      .code-text { font-family: monospace; fill: white; font-size: 14px; }
+      .icon { fill: white; opacity: 0.9; }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+        100% { transform: translateY(0px); }
+      }
+      .floating { animation: float 3s ease-in-out infinite; }
+      @keyframes codeFlow {
+        from { stroke-dashoffset: 1000; }
+        to { stroke-dashoffset: 0; }
+      }
+      .code-line {
+        stroke: rgba(255,255,255,0.3);
+        stroke-width: 1;
+        stroke-dasharray: 5,5;
+        animation: codeFlow 20s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <rect width="150" height="150" fill="url(#iosGrad)" rx="15"/>
+  
+  <g class="floating">
+    <text x="75" y="60" text-anchor="middle" class="code-text">@interface</text>
+    <text x="75" y="80" text-anchor="middle" class="code-text">Overlay : NSObject</text>
+    <path class="icon" d="M45,95 h60 M45,105 h60" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <path class="code-line" d="M10,10 L140,10 L140,140 L10,140 Z" fill="none"/>
+  <path class="code-line" d="M20,20 L130,20 L130,130 L20,130 Z" fill="none"/>
+
+  <text x="75" y="135" text-anchor="middle" fill="white" font-size="12px">Obj-C Overlay</text>
+</svg>

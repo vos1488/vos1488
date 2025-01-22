@@ -1,50 +1,134 @@
 <svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:blue;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:fuchsia;stop-opacity:1" />
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4158D0" />
+      <stop offset="46%" style="stop-color:#C850C0" />
+      <stop offset="100%" style="stop-color:#FFCC70" />
     </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
     <style>
       .title {
         font-family: 'Georgia', serif;
         font-size: 40px;
         fill: white;
-        text-shadow: 2px 2px 4px #000000;
+        filter: url(#glow);
         text-anchor: middle;
-        animation: fadeIn 3s infinite alternate;
+        animation: pulse 2s ease-in-out infinite, textGlow 4s infinite;
       }
       .subtitle {
         font-family: 'Courier New', monospace;
         font-size: 20px;
-        fill: white;
-        text-shadow: 1px 1px 2px #000000;
+        fill: #E0E0E0;
+        filter: url(#glow);
         text-anchor: middle;
-        animation: fadeIn 3s infinite alternate;
+        opacity: 0.9;
       }
-      @keyframes fadeIn {
-        from { fill: white; }
-        to { fill: black; }
+      @keyframes pulse {
+        0% { font-size: 40px; }
+        50% { font-size: 42px; }
+        100% { font-size: 40px; }
       }
-      @keyframes bounce {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(700px, 0); }
-        50% { transform: translate(700px, 180px); }
-        75% { transform: translate(0, 180px); }
-        100% { transform: translate(0, 0); }
+      @keyframes floatStar {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+      }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
       }
       .star {
         fill: white;
         stroke: none;
-        animation: bounce 5s infinite;
+        animation: floatStar 3s ease-in-out infinite;
+      }
+      .gear {
+        fill: rgba(255,255,255,0.8);
+        animation: spin 10s linear infinite;
+        transform-origin: center;
+      }
+      .coding-symbol {
+        font-family: monospace;
+        font-size: 24px;
+        fill: rgba(255,255,255,0.7);
+        animation: floatStar 4s ease-in-out infinite;
+      }
+      @keyframes meteor {
+        0% { transform: translate(-100px, -100px); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translate(900px, 300px); opacity: 0; }
+      }
+      .meteor {
+        fill: none;
+        stroke: white;
+        stroke-width: 2;
+        stroke-linecap: round;
+        animation: meteor 3s linear infinite;
+      }
+      .code-ring {
+        fill: none;
+        stroke: rgba(255,255,255,0.3);
+        stroke-width: 2;
+        animation: spin 20s linear infinite;
+      }
+      @keyframes particle {
+        0% { transform: translate(0, 0) scale(1); opacity: 0; }
+        50% { opacity: 0.8; }
+        100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+      }
+      .particle {
+        fill: white;
+        opacity: 0;
+      }
+      @keyframes textGlow {
+        0% { filter: url(#glow) drop-shadow(0 0 5px #4158D0); }
+        50% { filter: url(#glow) drop-shadow(0 0 15px #C850C0); }
+        100% { filter: url(#glow) drop-shadow(0 0 5px #4158D0); }
       }
     </style>
   </defs>
+  
   <rect width="100%" height="100%" fill="url(#grad1)"/>
-  <circle cx="50" cy="50" r="5" class="star" style="animation-delay: 0s;"/>
-  <circle cx="150" cy="50" r="5" class="star" style="animation-delay: 1s;"/>
-  <circle cx="250" cy="50" r="5" class="star" style="animation-delay: 2s;"/>
-  <circle cx="350" cy="50" r="5" class="star" style="animation-delay: 3s;"/>
-  <circle cx="450" cy="50" r="5" class="star" style="animation-delay: 4s;"/>
-  <text x="50%" y="50%" alignment-baseline="middle" class="title">Welcome to my GitHub Profile!</text>
-  <text x="50%" y="70%" alignment-baseline="middle" class="subtitle">Explore my projects and repositories</text>
+  
+  <!-- Add meteor effects -->
+  <line x1="0" y1="0" x2="20" y2="0" class="meteor" style="animation-delay: 0s"/>
+  <line x1="0" y1="0" x2="20" y2="0" class="meteor" style="animation-delay: 1.5s"/>
+
+  <!-- Add decorative code ring -->
+  <circle cx="700" cy="50" r="30" class="code-ring"/>
+  <circle cx="100" cy="150" r="40" class="code-ring"/>
+
+  <!-- Animated gears -->
+  <path class="gear" d="M50,50 L55,45 L60,50 L55,55 Z" />
+  <path class="gear" d="M700,150 L705,145 L710,150 L705,155 Z" />
+  
+  <!-- Coding symbols -->
+  <text x="100" y="40" class="coding-symbol">&lt;/&gt;</text>
+  <text x="650" y="160" class="coding-symbol">{}</text>
+  
+  <!-- Enhanced stars with different sizes and animations -->
+  <circle cx="150" cy="50" r="3" class="star" style="animation-delay: 0s;"/>
+  <circle cx="250" cy="70" r="4" class="star" style="animation-delay: 0.5s;"/>
+  <circle cx="350" cy="40" r="3" class="star" style="animation-delay: 1s;"/>
+  <circle cx="450" cy="60" r="4" class="star" style="animation-delay: 1.5s;"/>
+  <circle cx="550" cy="30" r="3" class="star" style="animation-delay: 2s;"/>
+  
+  <!-- Main text with enhanced effects -->
+  <text x="50%" y="45%" alignment-baseline="middle" class="title">Welcome to my GitHub Profile!</text>
+  <text x="50%" y="65%" alignment-baseline="middle" class="subtitle">Explore my projects and repositories</text>
+
+  <!-- Add particles -->
+  <circle class="particle" cx="400" cy="100" r="2" style="--tx: 100px; --ty: -50px; animation: particle 3s infinite;"/>
+  <circle class="particle" cx="200" cy="50" r="2" style="--tx: -80px; --ty: 100px; animation: particle 4s infinite 1s;"/>
+  <circle class="particle" cx="600" cy="150" r="2" style="--tx: 120px; --ty: -80px; animation: particle 3.5s infinite 0.5s;"/>
+
+  <!-- Add decorative binary code background -->
+  <text class="coding-symbol" x="50" y="180" font-size="14" opacity="0.2">01001100</text>
+  <text class="coding-symbol" x="750" y="30" font-size="14" opacity="0.2">10110011</text>
 </svg>

@@ -1,0 +1,69 @@
+<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ADD8"/>
+      <stop offset="46%" style="stop-color:#0096c7"/>
+      <stop offset="100%" style="stop-color:#0077b6"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+    <style>
+      @keyframes fadeInUp {
+        from { transform: translateY(10px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+      .message-bubble {
+        filter: url(#shadow);
+        animation: fadeInUp 0.5s ease-out backwards;
+      }
+      .online-status {
+        animation: pulse 2s ease-in-out infinite;
+      }
+      .typing-dot {
+        animation: blink 1s infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="150" height="150" fill="url(#chatGrad)" rx="10"/>
+  
+  <!-- Chat UI Elements -->
+  <rect x="15" y="15" width="120" height="120" rx="8" fill="rgba(255,255,255,0.1)"/>
+  
+  <!-- Header -->
+  <rect x="15" y="15" width="120" height="25" rx="8" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="25" cy="27" r="3" fill="#4ade80" class="online-status"/>
+  <text x="35" y="30" font-size="10" fill="white">WebChat</text>
+
+  <!-- Chat Messages -->
+  <g class="message-bubble" style="animation-delay: 0.2s">
+    <rect x="20" y="50" width="70" height="20" rx="10" fill="rgba(255,255,255,0.9)"/>
+    <text x="35" y="63" font-size="8" fill="#333">Hello!</text>
+  </g>
+
+  <g class="message-bubble" style="animation-delay: 0.4s">
+    <rect x="60" y="80" width="70" height="20" rx="10" fill="#00ADD8"/>
+    <text x="75" y="93" font-size="8" fill="white">Hi there!</text>
+  </g>
+
+  <!-- Typing Indicator -->
+  <g transform="translate(20,110)">
+    <circle cx="0" cy="0" r="2" fill="white" class="typing-dot" style="animation-delay: 0s"/>
+    <circle cx="6" cy="0" r="2" fill="white" class="typing-dot" style="animation-delay: 0.2s"/>
+    <circle cx="12" cy="0" r="2" fill="white" class="typing-dot" style="animation-delay: 0.4s"/>
+  </g>
+
+  <!-- Bottom Label -->
+  <text x="75" y="145" text-anchor="middle" fill="white" font-size="11" font-family="monospace">GoWEBCHAT</text>
+</svg>
