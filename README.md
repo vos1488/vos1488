@@ -243,7 +243,7 @@ Compatibility:
 ```
 
 ## Projects / Проекты
-### Obj-C Overlay (Private Repository)
+### Obj-C Overlay
 [![Obj-C Overlay](https://raw.githubusercontent.com/vos1488/vos1488/main/objc-overlay-preview.svg)](https://github.com/vos1488/overlay-objc)
 
 ### GoWEBCHAT
