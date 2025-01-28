@@ -81,6 +81,8 @@ MacBook Pro (Retina, 15-inch, Mid 2014):
   Memory: 16GB DDR3L 1600MHz
   Storage: 512GB PCIe 2.0 x4 SSD
   Display: 15.4" Retina IPS (2880x1800)
+  
+Display: 31,5" AOC Q32E2N (2560x1440)
 ```
 
 ## Development Stack / Стек разработки
